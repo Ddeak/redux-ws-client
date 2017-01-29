@@ -1,7 +1,7 @@
 {
   "name": "redux-ws-client",
   "description": "An alternative redux combineReducers function for use with feature package oriented applications",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Daniel Deak",
   "license": "UNLICENSED",
   "homepage": "",
