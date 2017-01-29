@@ -1,4 +1,4 @@
-import { stackReduxApp } from './stackReduxApp'
+import stackReduxApp from './stackReduxApp'
 import { makeActions, makeTypes } from './helpers'
 import websocket from './middleware'
 

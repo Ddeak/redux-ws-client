@@ -1,5 +1,7 @@
 import humps from 'humps'
 
+const types = { connect: 'SERVER_CONNECT' }
+
 const actions = {
   disconnect: () => ({
     types,

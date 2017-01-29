@@ -32,15 +32,10 @@ const stackReduxApp = opts => {
   return createStore => (services, initial, enhancer) => {
     const reducer = buildReducer(extractReducers(services))
 
-    const ware = [thunk]
-    if (opts.websocketUrl) ware.push(websocket(opts))
-
-    const middleware = applyMiddleware(...ware)
+    const middleware = applyMiddleware(websocket(opts))
     const enhancerFunc = enhancer ? combine(enhancer, middleware) : middleware
-    const store = createStore(reducer, initial, enhancerFunc)
-
-    return store
+    return createStore(reducer, initial, enhancerFunc)
   }
 }
 
-export { stackReduxApp }
+export default stackReduxApp
