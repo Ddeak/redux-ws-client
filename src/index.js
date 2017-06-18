@@ -1,5 +1,3 @@
-import stackReduxApp from './stackReduxApp'
-import { makeActions, makeTypes } from './helpers'
-import websocket from './middleware'
+import ReactReduxWebsocketEnhancer from './stackReduxApp'
 
-export { stackReduxApp, makeActions, makeTypes, websocket }
+export default ReactReduxWebsocketEnhancer

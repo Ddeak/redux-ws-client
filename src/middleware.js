@@ -1,20 +1,23 @@
 import io from 'socket.io-client'
-import { actions } from './action'
+import { response, disconnect } from './actions'
 
-const websocket = ({ websocketUrl }) => store => {
+export default ({ websocketUrl }) => store => {
   const socket = io.connect(websocketUrl)
-  socket.on('server_message', action => store.dispatch(action))
-  socket.on('disconnect', () => store.dispatch(actions.disconnect()))
+
+  socket.on('redux websocket server message', action => {
+    action.fromServer = true
+    store.dispatch(action)
+  })
+
+  socket.on('disconnect', () => store.dispatch(disconnect()))
 
   return next => action => {
     action.types = action.types || {}
     if (!action.fromServer && !action.local) {
-      const callback = action.next || (resultsFromServer => store.dispatch(actions.response(action, resultsFromServer)))
-      socket.emit('client_message', action, callback)
+      const callback = action.next || (resultsFromServer => store.dispatch(response(action, resultsFromServer)))
+      socket.emit('redux websocket client message', action, callback)
     }
 
     return next(action)
   }
 }
-
-export default websocket

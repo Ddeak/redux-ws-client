@@ -18,6 +18,7 @@
     "humps": "^1.1.0",
     "lodash": "^4.15.0",
     "redux": "^3.5.2",
+    "redux-devtools-extension": "^2.13.2",
     "socket.io-client": "^1.4.8"
   },
   "devDependencies": {
