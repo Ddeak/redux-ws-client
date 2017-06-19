@@ -1,4 +1,4 @@
-export const disconnect = ({
+export const disconnect = () => ({
   type: 'redux websocket disconnect'
 })
 

@@ -12,8 +12,7 @@ export default ({ websocketUrl }) => store => {
   socket.on('disconnect', () => store.dispatch(disconnect()))
 
   return next => action => {
-    action.types = action.types || {}
-    if (!action.fromServer && !action.local) {
+    if (!action.fromServer && action.local === false) {
       const callback = action.next || (resultsFromServer => store.dispatch(response(action, resultsFromServer)))
       socket.emit('redux websocket client message', action, callback)
     }
